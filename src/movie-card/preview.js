@@ -2,11 +2,14 @@ const { Component } = wp.element
 
 class Preview extends Component {
 	cardImage = (src, alt) => {
+    const { attributes: { borderColor } } = this.props
+
     if(!src) return null;
 
     if(alt) {
       return (
         <img
+          style={ { border: `5px solid ${borderColor}` }}
           className="card__image"
           src={ src }
           alt={ alt }
@@ -17,6 +20,7 @@ class Preview extends Component {
     // No alt set, so let's hide it from screen readers
     return (
       <img
+        style={ { border: `5px solid ${borderColor}` } }
         className="card__image"
         src={ src }
         alt=""

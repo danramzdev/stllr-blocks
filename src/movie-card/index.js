@@ -1,6 +1,12 @@
-const { RichText, MediaUpload, PlainText } = wp.editor;
+const { 
+  RichText, 
+  MediaUpload, 
+  PlainText, 
+  InspectorControls, 
+  ColorPalette
+} = wp.editor;
 const { registerBlockType } = wp.blocks;
-const { Button } = wp.components;
+const { Button, Panel, PanelBody } = wp.components;
 const { Fragment } = wp.element;
 
 import Preview from './preview'
@@ -32,10 +38,18 @@ registerBlockType('stllr-blocks/movie-card', {
     	source: 'attribute',
       attribute: 'src',
       selector: '.card__image'
+    },
+    borderColor: {
+      type: 'string',
+      default: 'grey'
+    },
+    backgroundColor: {
+      type: 'string',
+      default: 'transparent'
     }
   },
-  edit( { attributes, setAttributes } ) {
-    const { title, description, imageUrl, imageAlt } = attributes
+  edit( { attributes, className, setAttributes, focus } ) {
+    const { title, description, imageUrl, borderColor, backgroundColor} = attributes
 
     const getImageButton = (openEvent) => {
       if(imageUrl) {
@@ -61,10 +75,40 @@ registerBlockType('stllr-blocks/movie-card', {
       }
     };
 
-    return (
-      <Fragment>
+    return ([
+      <InspectorControls>
+        <PanelBody
+          title="Colors"
+          initialOpen={true}
+        > 
+          <div style={{ marginBottom: '20px' }}>
+            <p>Select Background Color</p>
+            <ColorPalette
+              value={backgroundColor}
+              onChange={color => {
+                if (color) {
+                  return setAttributes({ backgroundColor: color })
+                }
+                return setAttributes({ backgroundColor: 'transparent' })
+              }}
+            />
+          </div>
+          <hr/>
+          <p>Select Border Color</p>
+          <ColorPalette
+            value={borderColor}
+            onChange={ color => {
+              if (color) {
+                return setAttributes({ borderColor: color })
+              }
+              return setAttributes({ borderColor: 'transparent' })
+            } }
+          />
+        </PanelBody>
+      </InspectorControls>,
+      <div className={className} >
         <MediaUpload
-          onSelect={ media => { setAttributes({ imageAlt: media.alt, imageUrl: media.url }); } }
+          onSelect={ media => { setAttributes({ imageAlt: media.alt, imageUrl: media.url }) } }
           type="image"
           value={ attributes.imageID }
           render={ ({ open }) => getImageButton(open) }
@@ -86,8 +130,8 @@ registerBlockType('stllr-blocks/movie-card', {
           formattingControls={ ['bold', 'italic', 'underline'] }
           isSelected={ attributes.isSelected }
         />
-      </Fragment>
-    );
+      </div>
+    ]);
 
   },
 
