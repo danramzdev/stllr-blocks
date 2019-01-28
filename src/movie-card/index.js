@@ -2,14 +2,12 @@ const {
   RichText, 
   MediaUpload, 
   PlainText, 
-  InspectorControls, 
-  ColorPalette
 } = wp.editor;
 const { registerBlockType } = wp.blocks;
-const { Button, Panel, PanelBody } = wp.components;
-const { Fragment } = wp.element;
+const { Button } = wp.components;
 
 import Preview from './preview'
+import Inspector from './inspector'
 
 // Import our CSS files
 import './style.scss';
@@ -76,36 +74,7 @@ registerBlockType('stllr-blocks/movie-card', {
     };
 
     return ([
-      <InspectorControls>
-        <PanelBody
-          title="Colors"
-          initialOpen={true}
-        > 
-          <div style={{ marginBottom: '20px' }}>
-            <p>Select Background Color</p>
-            <ColorPalette
-              value={backgroundColor}
-              onChange={color => {
-                if (color) {
-                  return setAttributes({ backgroundColor: color })
-                }
-                return setAttributes({ backgroundColor: 'transparent' })
-              }}
-            />
-          </div>
-          <hr/>
-          <p>Select Border Color</p>
-          <ColorPalette
-            value={borderColor}
-            onChange={ color => {
-              if (color) {
-                return setAttributes({ borderColor: color })
-              }
-              return setAttributes({ borderColor: 'transparent' })
-            } }
-          />
-        </PanelBody>
-      </InspectorControls>,
+      <Inspector  { ...{attributes, setAttributes} } />,
       <div className={className} >
         <MediaUpload
           onSelect={ media => { setAttributes({ imageAlt: media.alt, imageUrl: media.url }) } }
