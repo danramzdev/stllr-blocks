@@ -8,6 +8,7 @@ const { Button } = wp.components;
 
 import Preview from './preview'
 import Inspector from './inspector'
+import Editor from './editor'
 
 // Import our CSS files
 import './style.scss';
@@ -21,6 +22,22 @@ registerBlockType('stllr-blocks/movie-card', {
     title: {
       source: 'text',
       selector: '.card__title'
+    },
+    year: {
+      source: 'text',
+      selector: '.card__year'
+    },
+    category: {
+      source: 'text',
+      selector: '.card__category'
+    },
+    director: {
+      source: 'text',
+      selector: '.card__director'
+    },
+    actors: {
+      source: 'text',
+      selector: '.card__actors'
     },
     description: {
       type: 'array',
@@ -47,59 +64,9 @@ registerBlockType('stllr-blocks/movie-card', {
     }
   },
   edit( { attributes, className, setAttributes, focus } ) {
-    const { title, description, imageUrl, borderColor, backgroundColor} = attributes
-
-    const getImageButton = (openEvent) => {
-      if(imageUrl) {
-        return (
-          <img
-            src={ imageUrl }
-            onClick={ openEvent }
-            className="image"
-          />
-        );
-      }
-      else {
-        return (
-          <div className="button-container">
-            <Button
-              onClick={ openEvent }
-              className="button button-large"
-            >
-              Pick an image
-            </Button>
-          </div>
-        );
-      }
-    };
-
     return ([
       <Inspector  { ...{attributes, setAttributes} } />,
-      <div className={className} >
-        <MediaUpload
-          onSelect={ media => { setAttributes({ imageAlt: media.alt, imageUrl: media.url }) } }
-          type="image"
-          value={ attributes.imageID }
-          render={ ({ open }) => getImageButton(open) }
-        />
-        <div>
-	        <label htmlFor="title">Título de la película</label>
-	        <PlainText
-	          onChange={ content => setAttributes({ title: content }) }
-	          value={ title }
-	          id="title"
-	          className="heading"
-	        />
-        </div>
-        <RichText
-          onChange={ content => setAttributes({ description: content }) }
-          value={ description }
-          multiline="p"
-          placeholder="Movie Description"
-          formattingControls={ ['bold', 'italic', 'underline'] }
-          isSelected={ attributes.isSelected }
-        />
-      </div>
+      <Editor { ...{attributes, setAttributes, className} } />
     ]);
 
   },
