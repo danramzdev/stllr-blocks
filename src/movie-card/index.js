@@ -1,10 +1,5 @@
-const { 
-  RichText, 
-  MediaUpload, 
-  PlainText, 
-} = wp.editor;
-const { registerBlockType } = wp.blocks;
-const { Button } = wp.components;
+const { registerBlockType } = wp.blocks
+const { Fragment } = wp.element
 
 import Preview from './preview'
 import Inspector from './inspector'
@@ -64,10 +59,12 @@ registerBlockType('stllr-blocks/movie-card', {
     }
   },
   edit( { attributes, className, setAttributes, focus } ) {
-    return ([
-      <Inspector  { ...{attributes, setAttributes} } />,
-      <Editor { ...{attributes, setAttributes, className} } />
-    ]);
+    return (
+      <Fragment>
+        <Inspector  { ...{attributes, setAttributes} } />
+        <Editor { ...{attributes, setAttributes, className} } />
+      </Fragment>
+    );
 
   },
 

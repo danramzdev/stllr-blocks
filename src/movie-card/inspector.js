@@ -6,7 +6,8 @@ class Inspector extends Component {
   render() {
     const { attributes: { backgroundColor, borderColor }, setAttributes } = this.props
 
-    return <InspectorControls>
+    return (
+      <InspectorControls>
 				<PanelBody title="Colors" initialOpen={true}>
 					<p>Select Background Color</p>
 					<ColorPalette value={backgroundColor} onChange={color => {
@@ -24,7 +25,8 @@ class Inspector extends Component {
 							return setAttributes({ borderColor: 'transparent' });
 						}} />
 				</PanelBody>
-			</InspectorControls>;
+			</InspectorControls>
+    )
   }
 }
 

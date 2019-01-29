@@ -1,8 +1,14 @@
-const { Component } = wp.editor
+const { Component } = wp.element
+const {
+  RichText,
+  MediaUpload,
+  PlainText,
+} = wp.editor
+const { Button } = wp.components;
 
 class Editor extends Component {
   getImageButton = (openEvent) => {
-    const { attributes: { imageUrl } } = this.props 
+    const { imageUrl } = this.props.attributes
 
     if (imageUrl) {
       return (
@@ -11,29 +17,22 @@ class Editor extends Component {
           onClick={openEvent}
           className="image"
         />
-      );
+      )
     }
-    else {
-      return (
-        <div className="button-container">
-          <Button
-            onClick={openEvent}
-            className="button button-large"
-          >
-            Pick an image
-            </Button>
-        </div>
-      );
-    }
+    return (
+      <div className="button-container">
+        <Button
+          onClick={openEvent}
+          className="button button-large"
+        >
+          Pick an image
+          </Button>
+      </div>
+    )
   }
 
   render() {
-    const { 
-      attributes,
-      setAttributes,
-      className
-    } = this.props
-
+    const { attributes, setAttributes, className } = this.props
     const { title, year, category, director, actors, description } = attributes
 
     return (
@@ -65,7 +64,7 @@ class Editor extends Component {
         <PlainText
           onChange={content => setAttributes({ director: content })}
           value={director}
-          placeholder="Movie Category"
+          placeholder="Movie Director"
           className="heading"
         />
         <PlainText
