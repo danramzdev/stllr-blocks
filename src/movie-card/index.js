@@ -16,38 +16,38 @@ registerBlockType('stllr-blocks/movie-card', {
   attributes: {
     title: {
       source: 'text',
-      selector: '.card__title'
+      selector: '.title'
     },
     year: {
       source: 'text',
-      selector: '.card__year'
+      selector: '.year'
     },
     category: {
       source: 'text',
-      selector: '.card__category'
+      selector: '.category'
     },
     director: {
       source: 'text',
-      selector: '.card__director'
+      selector: '.director'
     },
     actors: {
       source: 'text',
-      selector: '.card__actors'
+      selector: '.actors'
     },
     description: {
       type: 'array',
       source: 'children',
-      selector: '.card__body'
+      selector: '.description'
     },
     imageAlt: {
     	source: 'attribute',
       attribute: 'alt',
-      selector: '.card__image'
+      selector: 'img'
     },
     imageUrl: {
     	source: 'attribute',
       attribute: 'src',
-      selector: '.card__image'
+      selector: 'img'
     },
     borderColor: {
       type: 'string',

@@ -36,7 +36,7 @@ class Editor extends Component {
     const { title, year, category, director, actors, description } = attributes
 
     return (
-      <div className={className} >
+      <div className="container" >
         <MediaUpload
           onSelect={media => { setAttributes({ imageAlt: media.alt, imageUrl: media.url }) }}
           type="image"
