@@ -1,0 +1,136 @@
+.card {
+  font-size: 16px;
+  font-family: 'Segoe UI', Helvetica, sans-serif;
+  height: 482px;
+  width: 100%;
+  padding: 30px;
+  margin: 120px 0 30px !important;
+  display: grid;
+  grid-template: 1fr / 40% 60%;
+  border-radius: 20px;
+  // background-color: var(--background-color);
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__image-stars {
+    position: relative;
+
+    .image {
+      // border: 6px solid var(--image-border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      position: absolute;
+      top: -120px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+
+      img {
+        width: 100%;
+        vertical-align: top;
+      }
+    }
+
+    .stars {
+      text-align: center;
+      position: relative;
+      top: 85%;
+      color: yellow;
+      font-size: 2rem;
+    }
+  }
+
+  &__content {
+    padding-left: 30px;
+    text-align: center;
+    // color: var(--text-color);
+
+    .title-year {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+
+      .title,
+      .year {
+        display: inline-block;
+      }
+
+      .title {
+        text-transform: uppercase;
+        font-size: 2rem;
+        line-height: 2rem;
+        padding-right: 10px;
+      }
+    }
+
+    .category-director-actors {
+      margin-bottom: 20px;
+
+      & > p {
+        text-transform: uppercase;
+        font-size: 0.875rem;
+        margin-bottom: 6px;
+      }
+    }
+
+    .description {
+      font-size: 1.125rem;
+      margin-bottom: 40px;
+    }
+
+    a {
+      display: inline-block;
+      margin-bottom: 30px;
+      padding: 12px 36px;
+      // border: 3px solid var(--text-color);
+      // color: var(--text-color);
+      text-transform: uppercase;
+      text-decoration: none;
+      transition-duration: 0.3s;
+
+      // &:hover {
+      //   background-color: var(--text-color);
+      //   color: var(--background-color);
+      // }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    width: calc(100% - 40px);
+    margin: 20px auto;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    height: auto;
+
+    &__image-stars {
+      margin-bottom: -50px;
+
+      .image {
+        margin: 0 auto;
+        position: relative;
+        width: 80%;
+      }
+
+      .stars {
+        top: -80px;
+      }
+    }
+
+    &__content {
+      padding-left: 0;
+
+      .title-year {
+        .title {
+          font-size: 2rem;
+          line-height: 2rem;
+        }
+      }
+    }
+  }
+}
