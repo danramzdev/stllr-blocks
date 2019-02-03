@@ -8,9 +8,8 @@ class Preview extends Component {
 
     if(alt) {
       return (
-        <figure className="image">
+        <figure className="image" style={{ border: `6px solid ${borderColor}` }}>
           <img
-            style={ { border: `5px solid ${borderColor}` }}
             src={ src }
             alt={ alt }
           />
@@ -20,9 +19,8 @@ class Preview extends Component {
 
     // No alt set, so let's hide it from screen readers
     return (
-      <figure className="image">
+      <figure className="image" style={{ border: `6px solid ${borderColor}` }}>
         <img
-          style={ { border: `5px solid ${borderColor}` } }
           className="card__image"
           src={ src }
           alt=""
@@ -33,14 +31,21 @@ class Preview extends Component {
   };
 
 	render() {
-		const { attributes: { title, year, category, director, actors, description, imageUrl, imageAlt } } = this.props
+		const { attributes: { title, year, category, director, actors, description, imageUrl, imageAlt, backgroundColor, textColor } } = this.props
 
 		return (
-      <div className="card">
+      <div className="card" style={{ backgroundColor: backgroundColor }}>
         <div className="card__image-stars">
           { this.cardImage(imageUrl, imageAlt) }
+          <div class="stars">
+            <i class="dashicons dashicons-star-filled"></i>
+            <i class="dashicons dashicons-star-filled"></i>
+            <i class="dashicons dashicons-star-filled"></i>            
+            <i class="dashicons dashicons-star-half"></i>            
+            <i class="dashicons dashicons-star-empty"></i>            
+          </div>
         </div>
-        <div className="card__content">
+        <div className="card__content" style={{ color: textColor }}>
           <div className="title-year">
             <h3 className="title">{ title }</h3>
             <p className="year">{ year }</p>
@@ -53,6 +58,13 @@ class Preview extends Component {
           <div className="description">
             { description }
           </div>
+          <a 
+            href="https://www.imdb.com/title/tt5463162/"
+            style={{
+              backgroundColor: textColor,
+              color: backgroundColor
+            }}
+          >Comprar</a>
         </div>
       </div>
 		)

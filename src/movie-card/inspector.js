@@ -4,7 +4,7 @@ const { PanelBody } = wp.components
 
 class Inspector extends Component {
   render() {
-    const { attributes: { backgroundColor, borderColor }, setAttributes } = this.props
+    const { attributes: { backgroundColor, borderColor, textColor }, setAttributes } = this.props
 
     return (
       <InspectorControls>
@@ -24,6 +24,14 @@ class Inspector extends Component {
 							}
 							return setAttributes({ borderColor: 'transparent' });
 						}} />
+          <hr />
+          <p>Select Text Color</p>
+          <ColorPalette value={textColor} onChange={color => {
+            if (color) {
+              return setAttributes({ textColor: color });
+            }
+            return setAttributes({ textColor: 'black' });
+          }} />
 				</PanelBody>
 			</InspectorControls>
     )
