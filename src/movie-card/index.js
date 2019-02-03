@@ -28,11 +28,11 @@ registerBlockType('stllr-blocks/movie-card', {
     },
     director: {
       source: 'text',
-      selector: '.director'
+      selector: '.director span'
     },
     actors: {
       source: 'text',
-      selector: '.actors'
+      selector: '.actors span'
     },
     description: {
       type: 'array',

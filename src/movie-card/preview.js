@@ -33,7 +33,7 @@ class Preview extends Component {
   };
 
 	render() {
-		const { attributes: { title, description, imageUrl, imageAlt } } = this.props
+		const { attributes: { title, year, category, director, actors, description, imageUrl, imageAlt } } = this.props
 
 		return (
       <div className="card">
@@ -43,6 +43,12 @@ class Preview extends Component {
         <div className="card__content">
           <div className="title-year">
             <h3 className="title">{ title }</h3>
+            <p className="year">{ year }</p>
+          </div>
+          <div className="category-director-actors">
+            <p className="category">{ category }</p>
+            <p className="director"><strong>Director:</strong> <span>{ director }</span></p>
+            <p className="actors"><strong>Reparto:</strong> <span>{ actors }</span></p>
           </div>
           <div className="description">
             { description }
