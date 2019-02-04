@@ -1,7 +1,7 @@
 const { Component } = wp.element
 
 class Preview extends Component {
-	cardImage = (src, alt) => {
+	cardImage = ( src, alt ) => {
     const { attributes: { borderColor } } = this.props
 
     if(!src) return null;
@@ -28,15 +28,15 @@ class Preview extends Component {
         />
       </figure>
     );
-  };
+  }
 
 	render() {
-		const { attributes: { title, year, category, director, actors, description, imageUrl, imageAlt, backgroundColor, textColor } } = this.props
+		const { attributes: { title, year, category, director, actors, description, imageUrl, imageAlt, backgroundColor, textColor, fontSize, stars } } = this.props
 
 		return (
       <div className="card" style={{ backgroundColor: backgroundColor }}>
         <div className="card__image-stars">
-          { this.cardImage(imageUrl, imageAlt) }
+          { this.cardImage( imageUrl, imageAlt ) }
           <div class="stars">
             <i class="dashicons dashicons-star-filled"></i>
             <i class="dashicons dashicons-star-filled"></i>
@@ -45,9 +45,9 @@ class Preview extends Component {
             <i class="dashicons dashicons-star-empty"></i>            
           </div>
         </div>
-        <div className="card__content" style={{ color: textColor }}>
+        <div className="card__content" style={ { color: textColor } }>
           <div className="title-year">
-            <h3 className="title">{ title }</h3>
+            <h3 className="title" style={ { fontSize: fontSize } }>{ title }</h3>
             <p className="year">{ year }</p>
           </div>
           <div className="category-director-actors">

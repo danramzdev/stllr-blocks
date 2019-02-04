@@ -1,10 +1,11 @@
 const { Component } = wp.element
 const { InspectorControls, ColorPalette } = wp.editor
 const { PanelBody } = wp.components
+import { SelectFontSize } from './selects'
 
 class Inspector extends Component {
   render() {
-    const { attributes: { backgroundColor, borderColor, textColor }, setAttributes } = this.props
+    const { attributes: { backgroundColor, borderColor, textColor, fontSize }, setAttributes } = this.props
 
     return (
       <InspectorControls>
@@ -14,7 +15,7 @@ class Inspector extends Component {
 							if (color) {
 								return setAttributes({ backgroundColor: color });
 							}
-							return setAttributes({ backgroundColor: 'transparent' });
+							return setAttributes({ backgroundColor: 'white' });
 						}} />
 					<hr />
 					<p>Select Border Color</p>
@@ -33,7 +34,10 @@ class Inspector extends Component {
             return setAttributes({ textColor: 'black' });
           }} />
 				</PanelBody>
-			</InspectorControls>
+        <PanelBody title="Font Size" initialOpen={false}>
+          <SelectFontSize { ...{fontSize, setAttributes} } />
+        </PanelBody>
+      </InspectorControls>
     )
   }
 }

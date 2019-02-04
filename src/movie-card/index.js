@@ -55,11 +55,15 @@ registerBlockType('stllr-blocks/movie-card', {
     },
     backgroundColor: {
       type: 'string',
-      default: 'transparent'
+      default: 'white'
     },
     textColor: {
       type: 'string',
       default: 'black'
+    },
+    fontSize: {
+      type: 'string',
+      default: '2em'
     }
   },
   edit( { attributes, className, setAttributes, focus } ) {
