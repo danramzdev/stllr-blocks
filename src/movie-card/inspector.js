@@ -1,14 +1,17 @@
 const { Component } = wp.element
 const { InspectorControls, ColorPalette } = wp.editor
 const { PanelBody } = wp.components
-import { SelectFontSize } from './selects'
+import { SelectFontSize, SelectStars } from './selects'
 
 class Inspector extends Component {
   render() {
-    const { attributes: { backgroundColor, borderColor, textColor, fontSize }, setAttributes } = this.props
+    const { attributes: { backgroundColor, borderColor, textColor, fontSize, stars }, setAttributes } = this.props
 
     return (
       <InspectorControls>
+				<PanelBody title="Stars" initialOpen={true}>
+          <SelectStars  { ...{ stars, setAttributes } } />
+        </PanelBody>
 				<PanelBody title="Colors" initialOpen={true}>
 					<p>Select Background Color</p>
 					<ColorPalette value={backgroundColor} onChange={color => {

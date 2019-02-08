@@ -4,7 +4,7 @@ const {
   MediaUpload,
   PlainText,
 } = wp.editor
-const { Button } = wp.components;
+const { Button } = wp.components
 
 class Editor extends Component {
   getImageButton = (openEvent) => {

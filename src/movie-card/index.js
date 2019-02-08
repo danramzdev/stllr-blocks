@@ -64,6 +64,9 @@ registerBlockType('stllr-blocks/movie-card', {
     fontSize: {
       type: 'string',
       default: '2em'
+    },
+    stars: {
+      type: 'Chars'
     }
   },
   edit( { attributes, className, setAttributes, focus } ) {
@@ -73,10 +76,8 @@ registerBlockType('stllr-blocks/movie-card', {
         <Editor { ...{attributes, setAttributes, className} } />
       </Fragment>
     );
-
   },
-
-  save({ attributes }) {
+  save( { attributes } ) {
     return (
     	<Preview { ...{attributes} } />
     );

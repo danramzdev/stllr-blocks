@@ -1,12 +1,36 @@
 const { Component } = wp.element
 
+import classnames from 'classnames'
+
+const starsList = [ 'filled', 'half', 'empty' ];
+
 class Preview extends Component {
+  starsPrint = ( stars ) => {
+    let starsBuilded = []
+    let fullStars = Math.floor(stars)
+    let halfStars = stars % 1 ? 1 : 0
+    let emptyStars = 5 - Math.round(stars)
+    let i
+
+    for (i = 1; i <= fullStars; ++i) {
+      starsBuilded.push(starsList[0])
+    }
+    for (i = 1; i <= halfStars; ++i) {
+      starsBuilded.push(starsList[1])
+    }
+    for (i = 1; i <= emptyStars; ++i) {
+      starsBuilded.push(starsList[2])
+    }
+
+    return starsBuilded
+  }
+
 	cardImage = ( src, alt ) => {
     const { attributes: { borderColor } } = this.props
 
-    if(!src) return null;
+    if( !src ) return null;
 
-    if(alt) {
+    if( alt ) {
       return (
         <figure className="image" style={{ border: `6px solid ${borderColor}` }}>
           <img
@@ -31,18 +55,17 @@ class Preview extends Component {
   }
 
 	render() {
-		const { attributes: { title, year, category, director, actors, description, imageUrl, imageAlt, backgroundColor, textColor, fontSize, stars } } = this.props
+    const { attributes: { title, year, category, director, actors, description, imageUrl, imageAlt, backgroundColor, textColor, fontSize, stars } } = this.props
 
 		return (
       <div className="card" style={{ backgroundColor: backgroundColor }}>
         <div className="card__image-stars">
           { this.cardImage( imageUrl, imageAlt ) }
-          <div class="stars">
-            <i class="dashicons dashicons-star-filled"></i>
-            <i class="dashicons dashicons-star-filled"></i>
-            <i class="dashicons dashicons-star-filled"></i>            
-            <i class="dashicons dashicons-star-half"></i>            
-            <i class="dashicons dashicons-star-empty"></i>            
+          <div className="stars">
+            {/* <span style={{ display: 'none' }}>{ stars }</span> */}
+            { this.starsPrint( stars ).map( value => (
+              <i className={classnames('dashicons', `dashicons-star-${value}`)} ></i>
+            ) ) }
           </div>
         </div>
         <div className="card__content" style={ { color: textColor } }>
@@ -58,7 +81,7 @@ class Preview extends Component {
           <div className="description">
             { description }
           </div>
-          <a 
+          <a
             href="https://www.imdb.com/title/tt5463162/"
             style={{
               backgroundColor: textColor,
