@@ -55,16 +55,15 @@ class Preview extends Component {
   }
 
 	render() {
-    const { attributes: { title, year, category, director, actors, description, imageUrl, imageAlt, backgroundColor, textColor, fontSize, stars } } = this.props
+    const { attributes: { title, year, category, director, actors, description, imageUrl, imageAlt, sellUrl, backgroundColor, textColor, fontSize, stars } } = this.props
 
 		return (
       <div className="card" style={{ backgroundColor: backgroundColor }}>
         <div className="card__image-stars">
           { this.cardImage( imageUrl, imageAlt ) }
           <div className="stars">
-            {/* <span style={{ display: 'none' }}>{ stars }</span> */}
             { this.starsPrint( stars ).map( value => (
-              <i className={classnames('dashicons', `dashicons-star-${value}`)} ></i>
+              <i className={classnames('dashicons', `dashicons-star-${value}`)} />
             ) ) }
           </div>
         </div>
@@ -82,7 +81,8 @@ class Preview extends Component {
             { description }
           </div>
           <a
-            href="https://www.imdb.com/title/tt5463162/"
+            href={ sellUrl }
+            target="_blank"
             style={{
               backgroundColor: textColor,
               color: backgroundColor

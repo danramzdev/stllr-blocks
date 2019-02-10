@@ -3,6 +3,7 @@ const {
   RichText,
   MediaUpload,
   PlainText,
+  URLInputButton
 } = wp.editor
 const { Button } = wp.components
 
@@ -33,7 +34,7 @@ class Editor extends Component {
 
   render() {
     const { attributes, setAttributes, className } = this.props
-    const { title, year, category, director, actors, description } = attributes
+    const { title, year, category, director, actors, description, sellUrl } = attributes
 
     return (
       <div className="container" >
@@ -80,6 +81,10 @@ class Editor extends Component {
           placeholder="Movie Description"
           formattingControls={['bold', 'italic', 'underline']}
           isSelected={attributes.isSelected}
+        />
+        <URLInputButton 
+          url={ sellUrl }
+          onChange={ url => setAttributes( { sellUrl: url } ) }
         />
       </div>
     )

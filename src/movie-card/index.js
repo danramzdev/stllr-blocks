@@ -49,6 +49,12 @@ registerBlockType('stllr-blocks/movie-card', {
       attribute: 'src',
       selector: 'img'
     },
+    sellUrl: {
+      type: 'string',
+      selector: 'a',
+      source: 'attribute',
+      attribute: 'href'
+    },
     borderColor: {
       type: 'string',
       default: 'black'
