@@ -1,13 +1,13 @@
 const { registerBlockType } = wp.blocks
 const { Fragment } = wp.element
 
-import Preview from './preview'
-import Inspector from './inspector'
-import Editor from './editor'
+import Preview from './components/preview'
+import Inspector from './components/inspector'
+import Editor from './components/editor'
 
 // Import our CSS files
-import './style.scss';
-import './editor.scss';
+import './styles/style.scss';
+import './styles/editor.scss';
 
 registerBlockType('stllr-blocks/movie-card', {
   title: 'Movie Card',
