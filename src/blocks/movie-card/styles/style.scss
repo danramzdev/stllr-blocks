@@ -90,11 +90,6 @@
 }
 
 @media screen and (max-width: 1100px) {
-  body {
-    width: calc(100% - 40px);
-    margin: 20px auto;
-  }
-
   .card {
     grid-template-columns: 1fr;
     height: auto;
