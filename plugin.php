@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Stllr Blocks
  * Plugin URI: 
- * Description: Stllr Blocks — is a Gutenberg plugin created via create-guten-block.
+ * Description: Stllr Blocks — is a Gutenberg plugin created via create-guten-block for stllrnet applications.
  * Author: Daniel Ramírez
  * Author URI: https://danramz-portafolio.herokuapp.com
  * Version: 1.0.0
