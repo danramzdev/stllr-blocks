@@ -10,7 +10,7 @@
     "prepare": "npm run snyk-protect"
   },
   "dependencies": {
-    "cgb-scripts": "1.23.0",
+    "cgb-scripts": "1.23.1",
     "classnames": "^2.2.6",
     "snyk": "^1.316.1"
   },
